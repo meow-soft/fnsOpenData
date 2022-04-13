@@ -2,16 +2,21 @@ package meow.soft.fnsopendata.route;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import meow.soft.fnsopendata.interfaces.ICsvService;
 import meow.soft.fnsopendata.interfaces.IParseService;
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
 
 @Component
 @Log4j2
 @RequiredArgsConstructor
 public class FnsRoute extends RouteBuilder {
     private final IParseService parseService;
+
+    private final ICsvService csvService;
 
     @Override
     public void configure() {
@@ -26,7 +31,16 @@ public class FnsRoute extends RouteBuilder {
                 .setHeader("Connection", simple("keep-alive"))
                 .setHeader(Exchange.HTTP_METHOD, constant("GET"))
                 .toD("${body}")
-                .to("file://./tmp/?fileName=yourFileName.csv")
-                .log("file loaded");
+                .to("file://./tmp/?fileName=address_data.csv")
+                .log("file loaded")
+                .bean(csvService, "readFromFile('tmp/address_data.csv')")
+                .log("saved to db");
+
+        System.out.println("route config");
+    }
+
+    @PostConstruct
+    public void init() {
+        System.out.println("post construct");
     }
 }

@@ -7,4 +7,6 @@ public interface ITaxAuthorityService {
     void saveOrUpdate(TaxAuthority taxAuthority);
 
     TaxAuthorityDto findByCode(String code);
+
+    void clearRecords();
 }

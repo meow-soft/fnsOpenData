@@ -25,4 +25,9 @@ public class TaxAuthorityService implements ITaxAuthorityService {
         TaxAuthority byCode = repository.findByCode(code);
         return mapper.toDto(byCode);
     }
+
+    @Override
+    public void clearRecords() {
+        repository.deleteAll();
+    }
 }

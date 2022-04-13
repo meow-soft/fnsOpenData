@@ -23,7 +23,7 @@ class CsvServiceTest {
 
     @Test
     void testReadFromFile() {
-        csvService.readFromFile("tmp/yourFileName.csv");
+        csvService.readFromFile("tmp/address_data.csv");
     }
 }
 
