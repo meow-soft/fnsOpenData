@@ -1,0 +1,30 @@
+type TaxAuthority {
+    code: String,
+    title: String,
+    address: String,
+    phone: String,
+    additionalInfo : String,
+    paymentReceiver : String,
+    oktmo : String,
+    inn : String,
+    kpp : String,
+    bankTitle : String
+    bik : String,
+    correspondentAccount : String,
+    account : String,
+    registrationAuthorityCode : String,
+    title_2 : String,
+    address_2 : String,
+    phone_2 : String,
+    additionalInfo_2 : String,
+    registrationAuthorityCode_2 : String,
+    title_3 : String,
+    address_3 : String,
+    phone_3 : String,
+    additionalInfo_3 : String
+}
+
+type Query {
+    list:[TaxAuthority]
+    tnoByCode(code: String): TaxAuthority
+}
