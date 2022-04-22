@@ -25,6 +25,7 @@ type TaxAuthority {
 }
 
 type Query {
-    list:[TaxAuthority]
-    tnoByCode(code: String): TaxAuthority
+    list : [TaxAuthority]
+    tnoByCode(code: String) : TaxAuthority
+    tnoByCodes(codes : [String]) : [TaxAuthority]
 }

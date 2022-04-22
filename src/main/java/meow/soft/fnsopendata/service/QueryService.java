@@ -21,4 +21,8 @@ public class QueryService implements GraphQLQueryResolver {
     public TaxAuthority tnoByCode(String code) {
         return repository.findByCode(code);
     }
+
+    public List<TaxAuthority> tnoByCodes(List<String> codes) {
+        return repository.findByCodeIn(codes);
+    }
 }
